@@ -3,6 +3,7 @@ using Even_And_Odds_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Even_And_Odds_API.Controllers
 {
@@ -91,19 +92,25 @@ namespace Even_And_Odds_API.Controllers
                 Name = signUp.Name,
                 Surname = signUp.Surname,
                 PhoneNumber = signUp.Phone,
-                Type = signUp.Type,
+                Role = signUp.Role,
                 UserName = signUp.Email,
-                
+
             };
 
             var results = await manager.CreateAsync(users, signUp.Password);
 
             if (results.Succeeded)
             {
+                if (signUp.Role == "D")
+                {
+                    await _context.AddAsync(signUp.Car);
+                    await _context.SaveChangesAsync();
+                }
                 return Ok(users.Id);
             }
             else
             {
+
                 string error = "";
 
                 foreach (var res in results.Errors)
@@ -142,4 +149,5 @@ public class UserSignUp
     public string Make { get; set; }
     public string Status { get; set; }
     public string Password { get; set; }
+    public Car Car { get; set; }
 }

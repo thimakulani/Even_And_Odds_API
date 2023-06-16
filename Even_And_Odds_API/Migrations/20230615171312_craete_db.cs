@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Even_And_Odds_API.Migrations
 {
     /// <inheritdoc />
-    public partial class create_db : Migration
+    public partial class craete_db : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -172,21 +172,20 @@ namespace Even_And_Odds_API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    ContactNo = table.Column<string>(type: "text", nullable: true),
                     ItemType = table.Column<string>(type: "text", nullable: true),
                     PickupAddress = table.Column<string>(type: "text", nullable: true),
                     PickupLat = table.Column<double>(type: "double precision", nullable: false),
                     PickupLong = table.Column<double>(type: "double precision", nullable: false),
                     DestinationAddress = table.Column<string>(type: "text", nullable: true),
-                    DestinationLat = table.Column<string>(type: "text", nullable: true),
+                    DestinationLat = table.Column<double>(type: "double precision", nullable: false),
                     DestinationLong = table.Column<double>(type: "double precision", nullable: false),
                     PersonName = table.Column<string>(type: "text", nullable: true),
                     PersonContact = table.Column<string>(type: "text", nullable: true),
                     PaymentType = table.Column<string>(type: "text", nullable: true),
-                    RequestTime = table.Column<string>(type: "text", nullable: true),
+                    RequestTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UserId = table.Column<string>(type: "text", nullable: true),
                     Status = table.Column<string>(type: "text", nullable: true),
-                    Distance = table.Column<string>(type: "text", nullable: true),
+                    Distance = table.Column<double>(type: "double precision", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     DriverId = table.Column<string>(type: "text", nullable: true)
                 },

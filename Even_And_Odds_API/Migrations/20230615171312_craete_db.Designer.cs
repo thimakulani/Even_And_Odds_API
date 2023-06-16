@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Even_And_Odds_API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230614170805_create_db")]
-    partial class create_db
+    [Migration("20230615171312_craete_db")]
+    partial class craete_db
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,20 +31,17 @@ namespace Even_And_Odds_API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("text");
 
-                    b.Property<string>("ContactNo")
-                        .HasColumnType("text");
-
                     b.Property<string>("DestinationAddress")
                         .HasColumnType("text");
 
-                    b.Property<string>("DestinationLat")
-                        .HasColumnType("text");
+                    b.Property<double>("DestinationLat")
+                        .HasColumnType("double precision");
 
                     b.Property<double>("DestinationLong")
                         .HasColumnType("double precision");
 
-                    b.Property<string>("Distance")
-                        .HasColumnType("text");
+                    b.Property<double>("Distance")
+                        .HasColumnType("double precision");
 
                     b.Property<string>("DriverId")
                         .HasColumnType("text");
@@ -73,8 +70,8 @@ namespace Even_And_Odds_API.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
-                    b.Property<string>("RequestTime")
-                        .HasColumnType("text");
+                    b.Property<DateTime>("RequestTime")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Status")
                         .HasColumnType("text");
